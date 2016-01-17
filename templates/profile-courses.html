@@ -1,0 +1,19 @@
+<ion-view view-title="My Courses">
+  <ion-content ng-init="init();" class="content_background">
+    <div class="list">
+      <div ng-repeat="(key, value) in courses" class="item item-button-right">
+        <h2>Course Code: {{value.course}}</h2>
+        <p> Grade: {{value.grade}} </p>
+        <button class="button button-positive" ui-sref="app.profile-add-course({key : key, course : value.course, grade : value.grade, startDate : value.startDate, edit : true})">
+          <i class="icon ion-edit"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="padding">
+      <button class="button button-positive button-block" ui-sref="app.profile-add-course">
+        Add New Course To Profile
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

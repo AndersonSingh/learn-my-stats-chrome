@@ -1,0 +1,26 @@
+<ion-view view-title="Home">
+  <ion-content ng-init="init();" id="parallax_content" class="content_background">
+
+    <div id="profile-bg">
+    </div>
+
+    <div id="content">
+      <div id="profile-info">
+        <img id="profile-image" ng-src="{{authData[authData.provider].profileImageURL}}">
+        <h3 id="profile-name">{{authData[authData.provider].displayName}}</h3>
+        <span id="profile-description">Student</span>
+      </div>
+
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="goCourse();">
+          My Courses
+        </button>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="goProfile();">
+          My Profile
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

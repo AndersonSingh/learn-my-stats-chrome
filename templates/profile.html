@@ -1,0 +1,76 @@
+<ion-view view-title="My Profile">
+  <ion-content ng-init="init();" id="parallax_content" class="content_background">
+
+    <div id="profile-bg">
+    </div>
+
+    <div id="content">
+      <div id="profile-info">
+        <img id="profile-image" ng-src="{{authData[authData.provider].profileImageURL}}">
+        <h3 id="profile-name">{{authData[authData.provider].displayName}}</h3>
+        <span id="profile-description">Student</span>
+      </div>
+
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          University
+        </div>
+        <select ng-model="university">
+          <option ng-repeat="university in universities">{{university.name}}</option>
+        </select>
+      </label>
+
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Degree
+        </div>
+        <select ng-model="degree">
+          <option ng-repeat="degree in degrees">{{degree.name}}</option>
+        </select>
+      </label>
+
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Degree Start Date
+        </div>
+        <input ng-model="startDate" type="date">
+      </label>
+
+      <div class="item item-divider">
+        Reminder
+      </div>
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Period
+        </div>
+        <select ng-model="reminderPeriod">
+          <option>Monthly</option>
+          <option>Weekly</option>
+          <option>Daily</option>
+        </select>
+      </label>
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Time
+        </div>
+        <input ng-model="reminderTime" type="time" required>
+      </label>
+
+
+
+      <div class="padding">
+
+        <button class="button button-block button-positive" ng-click="save(university, degree, startDate,reminderPeriod, reminderTime);">
+          Save Profile
+        </button>
+
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,29 @@
+<ion-view view-title="Add Assessment">
+  <ion-content ng-init="init();" class="content_background">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Assessment Type
+      </div>
+      <select ng-model="assessmentType">
+        <option ng-repeat="(key, value) in assessmentTypes">{{key}}</option>
+      </select>
+    </label>
+
+    <!-- this displays a list of grades -->
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Grade
+      </div>
+      <select ng-model="grade">
+        <option ng-repeat="(key, value) in grades">{{key}}</option>
+      </select>
+    </label>
+
+    <div class="padding">
+      <button class="button button-block button-positive" ng-click="save(course, assessmentType, grade);">
+        Save
+      </button>
+    </div>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,20 @@
+<ion-view view-title="Assessments">
+  <ion-content ng-init="view_init();" class="content_background">
+    <div class="list">
+      <div ng-repeat="(akey, value) in assessments track by $index" class="item item-button-right">
+        <h2>Assessment Number {{$index + 1}}</h2>
+        <p> Type: {{value.assessmentType}} </p>
+        <p> Grade: {{value.grade}} </p>
+        <button class="button button-positive"ui-sref="app.edit-course-assessment({key : key, assessmentId : akey,  course : course, assessmentType : value.assessmentType, grade : value.grade})">
+          <i class="icon ion-edit"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="padding">
+      <button class="button button-block button-positive" ui-sref="app.add-course-assessment({key : key})">
+        Add Assessment
+      </button>
+    </div>
+  </ion-content>
+</ion-view>
