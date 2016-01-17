@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'firebase', 'ngCordovaOauth'])
+angular.module('starter', ['ionic', 'firebase'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -198,7 +198,7 @@ angular.module('starter', ['ionic', 'firebase', 'ngCordovaOauth'])
 
 }])
 
-.controller('LoginCtrl', ['$scope', '$state', '$cordovaOauth', function($scope, $state, $cordovaOauth){
+.controller('LoginCtrl', ['$scope', '$state', function($scope, $state){
 
   $scope.authData = JSON.parse(localStorage.getItem('firebase:session::learn-my-stats'));
 
@@ -226,29 +226,29 @@ angular.module('starter', ['ionic', 'firebase', 'ngCordovaOauth'])
   /* function to sign the user in via google. */
   $scope.signInGoogle = function(){
     var ref = new Firebase("https://learn-my-stats.firebaseio.com");
-/*
-    ref.authWithOAuthRedirect("google", function(error, authData) {
-      if (error) {
-        console.log("DEBUG: SIGNIN FAILED.", error);
-        console.log(authData);
-      }
-      else {
-        console.log("DEBUG: SIGNIN SUCCESS.", authData);
-        $state.go('app.profile');
-      }
+
+
+    chrome.identity.getAuthToken({
+        interactive: true
+    }, function(token) {
+        localStorage.setItem("token",token);
+        if (chrome.runtime.lastError) {
+            alert(chrome.runtime.lastError.message);
+            return;
+        }
+
+        // Authenticate with Google using an existing OAuth 2.0 access token
+        ref.authWithOAuthToken("google", token, function(error, authData) {
+          if (error) {
+            console.log("Login Failed!", error);
+          } else {
+            console.log("Authenticated successfully with payload:", authData);
+            $state.go("app.profile");
+          }
+        });
+
+
     });
-
-    */
-
-    $cordovaOauth.google("531415675160-miiq35fjo2brp3pg3cfo0g27pi7n7b62.apps.googleusercontent.com").then(function(result) {
-     auth.$authWithOAuthToken("google", result.access_token).then(function(authData) {
-         console.log(JSON.stringify(authData));
-     }, function(error) {
-         console.error("ERROR: " + error);
-     });
- }, function(error) {
-     console.log("ERROR: " + error);
- });
 
   };
 

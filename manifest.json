@@ -1,18 +1,22 @@
 {
-  "manifest_version": 2,
-
-  "name": "Getting started example",
-  "description": "This extension shows a Google Image search result for the current page",
-  "version": "1.0",
-
-  "browser_action": {
-    "default_icon": "img/ionic.png",
-    "default_popup": "index.html"
-  },
-  "permissions": [
-    "activeTab",
-    "https://ajax.googleapis.com/"
-
-  ],
-  "content_security_policy": "script-src 'self' https://cdn.firebase.com https://*.firebase.com https://*.firebaseio.com; object-src 'self'"
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwvGuXRj8gZLUZdhonwTbi31V72xtIkPse3k7FUL0VmvqK0xptatWFHg1LQ87OfWrL3SMQnfdZ4h8wIaHNq3saLTVCtTkb2wS6mO/FJ7tre/qRRn/ppKE2jnXv/4aXTwejxSruer6hGux4u2HPYvW+/FFLvk1wsk8ixPxf7lFXm6s0GDkdmkI0mIdL8QZ27lFUgnLrATwIrZULt5HDIoQ9XslINClsMdBxv2ORjkLoGgjMfIZeG1dvb2072UKBamor70iE09gk5ICOey2u9QsNjEaMU/R3FEWPHHw1hsRSkTSsmokVi1MOWkzFCepa4DCxnQHqd5Uw6FtOOI0EJgbwQIDAQAB",
+    "version": "1",
+    "name": "Learn My Stats",
+    "manifest_version": 2,
+    "browser_action": {
+      "default_icon": "img/ionic.png",
+      "default_popup": "index.html"
+    },
+    "permissions": [
+        "identity",
+        "https://accounts.google.com/*",
+        "https://www.googleapis.com/*"
+    ],
+    "oauth2": {
+        "client_id": "287376770659-farkktq86msc1ggd55m0bko4sljesucl.apps.googleusercontent.com",
+        "scopes": [
+            "https://www.googleapis.com/auth/userinfo.email"
+        ]
+    },
+    "content_security_policy": "script-src 'self' https://cdn.firebase.com https://*.firebase.com https://*.firebaseio.com; object-src 'self'"
 }
